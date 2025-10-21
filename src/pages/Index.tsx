@@ -135,7 +135,7 @@ const Index = () => {
       <section id="home" className="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-b from-secondary/30 to-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
+            <div className="animate-fade-in-left">
               <h2 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
                 Гирудотерапия
               </h2>
@@ -154,7 +154,7 @@ const Index = () => {
                 </Button>
               </div>
             </div>
-            <div className="animate-fade-in">
+            <div className="animate-fade-in-right">
               <img
                 src="https://cdn.poehali.dev/projects/6ef6599a-490e-4c23-96ad-9e82ec81c82b/files/a96cb305-c00b-4a56-985e-abd3ade04fe0.jpg"
                 alt="Специалист по гирудотерапии"
@@ -168,25 +168,25 @@ const Index = () => {
       <section id="about" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-primary">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-primary animate-fade-in-up">
               Обо мне
             </h2>
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <Card className="text-center p-6">
+              <Card className="text-center p-6 animate-fade-in-up animation-delay-100">
                 <CardContent className="pt-6">
                   <Icon name="GraduationCap" className="mx-auto mb-4 text-accent" size={48} />
                   <h3 className="text-xl font-semibold mb-2">Образование</h3>
                   <p className="text-foreground/70">Сертифицированный специалист по гирудотерапии</p>
                 </CardContent>
               </Card>
-              <Card className="text-center p-6">
+              <Card className="text-center p-6 animate-fade-in-up animation-delay-200">
                 <CardContent className="pt-6">
                   <Icon name="Award" className="mx-auto mb-4 text-accent" size={48} />
                   <h3 className="text-xl font-semibold mb-2">Опыт</h3>
                   <p className="text-foreground/70">Более 10 лет практики в области натуральной медицины</p>
                 </CardContent>
               </Card>
-              <Card className="text-center p-6">
+              <Card className="text-center p-6 animate-fade-in-up animation-delay-300">
                 <CardContent className="pt-6">
                   <Icon name="Users" className="mx-auto mb-4 text-accent" size={48} />
                   <h3 className="text-xl font-semibold mb-2">Пациенты</h3>
@@ -194,7 +194,7 @@ const Index = () => {
                 </CardContent>
               </Card>
             </div>
-            <Card>
+            <Card className="animate-scale-in animation-delay-400">
               <CardContent className="p-8">
                 <p className="text-lg text-foreground/80 leading-relaxed mb-4">
                   Приветствую вас! Я — Ялина Ольга Васильевна, практикующий специалист по гирудотерапии 
@@ -217,15 +217,15 @@ const Index = () => {
 
       <section id="services" className="py-16 md:py-24 bg-secondary/20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-primary">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-primary animate-fade-in-up">
             Услуги
           </h2>
-          <p className="text-center text-lg text-foreground/70 mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-lg text-foreground/70 mb-12 max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
             Комплексное лечение широкого спектра заболеваний с помощью гирудотерапии
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
+              <Card key={index} className={`hover:shadow-lg transition-shadow animate-scale-in animation-delay-${(index + 1) * 100}`}>
                 <CardContent className="p-6">
                   <Icon name={service.icon as any} className="mb-4 text-primary" size={40} />
                   <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
@@ -240,14 +240,14 @@ const Index = () => {
       <section id="therapy" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-            <div>
+            <div className="animate-fade-in-left">
               <img
                 src="https://cdn.poehali.dev/projects/6ef6599a-490e-4c23-96ad-9e82ec81c82b/files/5b8c38d3-5021-459d-903a-4188ae547365.jpg"
                 alt="Медицинская пиявка"
                 className="rounded-2xl shadow-xl w-full"
               />
             </div>
-            <div>
+            <div className="animate-fade-in-right">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
                 Что такое гирудотерапия?
               </h2>
@@ -293,15 +293,15 @@ const Index = () => {
 
       <section id="reviews" className="py-16 md:py-24 bg-secondary/20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-primary">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-primary animate-fade-in-up">
             Отзывы пациентов
           </h2>
-          <p className="text-center text-lg text-foreground/70 mb-12">
+          <p className="text-center text-lg text-foreground/70 mb-12 animate-fade-in-up animation-delay-100">
             Что говорят люди, которые уже прошли курс лечения
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {testimonials.map((review, index) => (
-              <Card key={index}>
+              <Card key={index} className={`animate-fade-in-up animation-delay-${(index + 2) * 100}`}>
                 <CardContent className="p-6">
                   <div className="flex gap-1 mb-4">
                     {[...Array(review.rating)].map((_, i) => (
@@ -320,11 +320,11 @@ const Index = () => {
       <section id="contacts" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-primary">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-primary animate-fade-in-up">
               Контакты
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
-              <Card>
+              <Card className="animate-fade-in-left animation-delay-200">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-semibold mb-6">Свяжитесь со мной</h3>
                   <div className="space-y-4">
@@ -370,7 +370,7 @@ const Index = () => {
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="animate-fade-in-right animation-delay-300">
                 <CardContent className="p-8">
                   <h3 className="text-2xl font-semibold mb-6">Запись на консультацию</h3>
                   <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert('Форма отправки будет подключена позже!'); }}>
