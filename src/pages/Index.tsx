@@ -3,17 +3,29 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 import { Separator } from '@/components/ui/separator';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);
+      setMobileMenuOpen(false);
     }
   };
+
+  const menuItems = [
+    { id: 'home', label: 'Главная' },
+    { id: 'about', label: 'Обо мне' },
+    { id: 'services', label: 'Услуги' },
+    { id: 'therapy', label: 'Гирудотерапия' },
+    { id: 'reviews', label: 'Отзывы' },
+    { id: 'contacts', label: 'Контакты' }
+  ];
 
   const services = [
     {
@@ -73,26 +85,49 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold text-primary">Ялина О.В.</h1>
             <div className="hidden md:flex gap-6">
-              {['home', 'about', 'services', 'therapy', 'reviews', 'contacts'].map((section) => (
+              {menuItems.map((item) => (
                 <button
-                  key={section}
-                  onClick={() => scrollToSection(section)}
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
-                    activeSection === section ? 'text-primary' : 'text-foreground/70'
+                    activeSection === item.id ? 'text-primary' : 'text-foreground/70'
                   }`}
                 >
-                  {section === 'home' && 'Главная'}
-                  {section === 'about' && 'Обо мне'}
-                  {section === 'services' && 'Услуги'}
-                  {section === 'therapy' && 'Гирудотерапия'}
-                  {section === 'reviews' && 'Отзывы'}
-                  {section === 'contacts' && 'Контакты'}
+                  {item.label}
                 </button>
               ))}
             </div>
             <Button onClick={() => scrollToSection('contacts')} className="hidden md:block">
               Записаться
             </Button>
+            
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Icon name="Menu" size={24} />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <div className="flex flex-col gap-6 mt-8">
+                  <h2 className="text-2xl font-bold text-primary mb-4">Меню</h2>
+                  {menuItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`text-left text-lg font-medium transition-colors hover:text-primary py-2 ${
+                        activeSection === item.id ? 'text-primary' : 'text-foreground/70'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                  <Separator className="my-4" />
+                  <Button onClick={() => scrollToSection('contacts')} size="lg" className="w-full">
+                    Записаться на консультацию
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </nav>
